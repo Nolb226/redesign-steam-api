@@ -1,8 +1,8 @@
 import bodyParser from 'body-parser';
 import express from 'express';
-import route from '../apps';
-import handler from '../libraries/ErrorManagement/handler';
 import dotenv from 'dotenv';
+import route from '../apps/index.js';
+import handler from '../libraries/ErrorManagement/handler/index.js';
 
 class App {
 	public app: express.Application;

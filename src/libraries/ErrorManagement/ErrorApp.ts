@@ -1,4 +1,4 @@
-import { HTTP_CODES } from '../../configs/constants';
+import { HTTP_CODES } from '../../configs/constants.js';
 
 export class AppError extends Error {
 	public readonly name: string;

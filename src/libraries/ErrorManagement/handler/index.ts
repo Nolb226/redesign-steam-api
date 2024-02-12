@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import { AppError } from '../ErrorApp';
-import Logger from '../../Logger';
+import { AppError } from '../ErrorApp.js';
+import Logger from '../../Logger/index.js';
 
 const isTrustedError = (err: Error) => {
 	if (err instanceof AppError) {
