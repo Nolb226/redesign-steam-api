@@ -28,7 +28,7 @@ class App {
 			);
 			next();
 		});
-		this.app.use(`/api/v1`, route);
+		this.app.use(route);
 		this.app.use(handler);
 	}
 }
