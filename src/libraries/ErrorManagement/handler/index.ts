@@ -15,6 +15,8 @@ export default (
 	res: Response,
 	next: NextFunction
 ) => {
+	console.log(err);
+
 	const logs = {
 		type: err.name,
 		message: err.message,
@@ -25,6 +27,7 @@ export default (
 		query: req.query,
 		stack: err.stack,
 	};
+	console.log(err);
 
 	if (isTrustedError(err)) {
 		Logger.info(logs);

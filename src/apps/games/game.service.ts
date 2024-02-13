@@ -1,10 +1,12 @@
 import { BASIC_ERRORS, HTTP_CODES } from '../../configs/constants.js';
 import { AppError } from '../../libraries/ErrorManagement/ErrorApp.js';
 import gameRepository from './game.repository.js';
-import { TGame } from './game.type.js';
+import { TCreateApp, TGame } from './game.type.js';
 
 interface IGameService {
 	getGameById(id: string): Promise<TGame>;
+	createApp(payload: TCreateApp): Promise<TGame>;
+	createMultipleApp(payload: TCreateApp[]): Promise<TGame[]>;
 }
 
 class GameService implements IGameService {
@@ -20,6 +22,13 @@ class GameService implements IGameService {
 		}
 
 		return game;
+	}
+	async createApp(payload: TCreateApp): Promise<TGame> {
+		return await gameRepository.createApp(payload);
+	}
+
+	async createMultipleApp(payload: TCreateApp[]): Promise<TGame[]> {
+		return await gameRepository.createMultipleApp(payload);
 	}
 }
 

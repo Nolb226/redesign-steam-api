@@ -20,7 +20,7 @@ dist
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
+.env
 # Local ENV files
 .env.local
 .env.development.local

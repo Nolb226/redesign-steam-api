@@ -23,10 +23,39 @@ class GameController {
 		try {
 			const { gameId } = req.params;
 
-			console.log(gameId);
-
 			const game = await gameService.getGameById(gameId);
-			res.status(HTTP_CODES.OK).json({ id: gameId, ...game });
+			res.status(HTTP_CODES.OK).json(game);
+		} catch (error) {
+			next(error);
+		}
+	}
+
+	async createApp(
+		req: Request,
+		res: Response,
+		next: NextFunction
+	): Promise<void> {
+		try {
+			const payload = req.body;
+			console.log(payload);
+
+			const game = await gameService.createApp(payload);
+			res.status(HTTP_CODES.OK).json({ message: 'done' });
+		} catch (error) {
+			next(error);
+		}
+	}
+
+	async createMultipleApp(
+		req: Request,
+		res: Response,
+		next: NextFunction
+	): Promise<void> {
+		try {
+			const payload = req.body;
+
+			const game = await gameService.createMultipleApp(payload);
+			res.status(HTTP_CODES.OK).json({ message: 'done' });
 		} catch (error) {
 			next(error);
 		}
