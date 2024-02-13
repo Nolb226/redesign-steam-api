@@ -34,8 +34,8 @@ export type TGame = {
 	positive: number;
 	negative: number;
 	estimated_owners: string;
-	average_playtime_forever: number;
-	average_playtime_2week: number;
+	average_playtime_forever?: number;
+	average_playtime_2week?: number;
 	median_playtime_forever: number;
 	peak_ccu: 15;
 	tags: { [name: string]: number };

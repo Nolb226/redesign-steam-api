@@ -10,7 +10,7 @@ class GameModel implements IGameModel {
 		const game: TGame = data[id];
 		console.log(game);
 
-		return {} as TGame;
+		return game;
 	}
 }
 
