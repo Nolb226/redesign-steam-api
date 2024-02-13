@@ -5,4 +5,6 @@ const gameRoute: Router = Router();
 
 gameRoute.route('/').get(gameController.getGames);
 
+gameRoute.route('/:gameId').get(gameController.getGameById);
+
 export default gameRoute;
