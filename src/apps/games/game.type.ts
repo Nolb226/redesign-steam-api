@@ -40,6 +40,10 @@ export type TGame = {
 	median_playtime_forever: number;
 	peak_ccu: number;
 	tags: { [name: string]: number };
+	background: string;
+	pc_requirements?: IRequirements;
+	mac_requirements?: IRequirements;
+	linux_requirements?: IRequirements;
 };
 
 export type TTags = {};
@@ -54,6 +58,11 @@ export type TSub = {
 	text: string;
 	description: string;
 	price: number;
+};
+
+export type IRequirements = {
+	minimum: String;
+	recommended?: string;
 };
 
 export type TCreateApp = {
