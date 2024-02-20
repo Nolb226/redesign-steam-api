@@ -4,12 +4,17 @@ import gameRepository from './game.repository.js';
 import { TCreateApp, TGame } from './game.type.js';
 
 interface IGameService {
+	getAllApp(): Promise<TGame[]>;
 	getGameById(id: string): Promise<TGame>;
 	createApp(payload: TCreateApp): Promise<TGame>;
 	createMultipleApp(payload: TCreateApp[]): Promise<TGame[]>;
 }
 
 class GameService implements IGameService {
+	async getAllApp(): Promise<TGame[]> {
+		const games = await gameRepository.getAllApp();
+		return games;
+	}
 	async getGameById(id: string): Promise<TGame> {
 		const game = await gameRepository.getById(id);
 

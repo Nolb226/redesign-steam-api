@@ -9,7 +9,8 @@ class GameController {
 		next: NextFunction
 	): Promise<void> {
 		try {
-			res.status(200).json({ message: 'test' });
+			const games = await gameService.getAllApp();
+			res.status(HTTP_CODES.OK).json(games);
 		} catch (error) {
 			next(error);
 		}
