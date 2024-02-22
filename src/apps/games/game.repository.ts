@@ -22,6 +22,8 @@ class GameRepository implements IGameRepository {
 				'mac',
 				'release_date',
 				'price',
+				'positive',
+				'negative',
 			]);
 	}
 
