@@ -4,7 +4,7 @@ import { IRequirements, TGame, TPackage } from './game.type.js';
 
 interface IGame extends TGame {}
 
-const gameSchema = new Schema<IGame>({
+export const gameSchema = new Schema<IGame>({
 	id: String,
 	about_the_game: String,
 	website: String,

@@ -18,8 +18,8 @@ class App {
 	private config(): void {
 		dotenv.config();
 		this.app.use(cors());
-		// this.app.use(bodyParser.urlencoded({ extended: true }));
 		// this.app.use(bodyParser.json());
+		// this.app.use(bodyParser.urlencoded({ extended: true }));
 		this.app.use((req, res, next) => {
 			res.setHeader('Access-Control-Allow-Origin', '*');
 			res.setHeader(

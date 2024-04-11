@@ -15,8 +15,6 @@ export default (
 	res: Response,
 	next: NextFunction
 ) => {
-	console.log(err);
-
 	const logs = {
 		type: err.name,
 		message: err.message,
