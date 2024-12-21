@@ -1,22 +1,22 @@
-import cors from "cors";
-import express, { type Express } from "express";
-import helmet from "helmet";
-import { pino } from "pino";
-
-const logger = pino({ name: "server start" });
+import cors from 'cors';
+import express, { type Express } from 'express';
+import helmet from 'helmet';
+import defineRoutes from './services';
+import { errorHandler } from './libraries/error-handling';
 
 // // Set the application to trust the reverse proxy
 // app.set('trust proxy', true);
 
 export const createServer = (): Express => {
-  const app: Express = express();
-  app
-    .use(express.json())
-    .use(express.urlencoded({ extended: true }))
-    .use(cors({ origin: process.env.CORS_ORIGIN, credentials: true }))
-    .use(helmet());
-
-  return app;
+	const app: Express = express();
+	app
+		.use(express.json())
+		.use(express.urlencoded({ extended: true }))
+		.use(cors({ origin: process.env.CORS_ORIGIN, credentials: true }))
+		.use(helmet());
+	defineRoutes(app);
+	app.use(errorHandler.handler);
+	return app;
 };
 // Middlewares
 

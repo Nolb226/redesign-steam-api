@@ -1,0 +1,497 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+type AppsLinuxRequirements {
+  minimum     String?
+  recommended String?
+}
+
+type AppsMacRequirements {
+  minimum     String
+  recommended String?
+}
+
+type AppsPackages {
+  description String
+  subs        AppsPackagesSubs[]
+  title       String
+}
+
+type AppsPackagesSubs {
+  description String
+  /// Multiple data types found: Float: 99.6%, Int: 0.4% out of 904 sampled entries
+  price       Json
+  text        String
+}
+
+type AppsPcRequirements {
+  minimum     String?
+  recommended String?
+}
+
+type AppsTags {
+  s                                 Int? @map("1980s")
+  s                                 Int? @map("1990's")
+  D                                 Int? @map("2.5D")
+  D                                 Int? @map("2D")
+  D_Fighter                         Int? @map("2D Fighter")
+  D_Platformer                      Int? @map("2D Platformer")
+  D                                 Int? @map("3D")
+  D_Fighter                         Int? @map("3D Fighter")
+  D_Platformer                      Int? @map("3D Platformer")
+  D_Vision                          Int? @map("3D Vision")
+  Player_Local                      Int? @map("4 Player Local")
+  X                                 Int? @map("4X")
+  DOF                               Int? @map("6DOF")
+  bit_Music                         Int? @map("8-bit Music")
+  Abstract                          Int?
+  Action                            Int?
+  Action_RPG                        Int? @map("Action RPG")
+  Action_RTS                        Int? @map("Action RTS")
+  Action_Roguelike                  Int? @map("Action Roguelike")
+  Action_Adventure                  Int? @map("Action-Adventure")
+  Addictive                         Int?
+  Adventure                         Int?
+  Agriculture                       Int?
+  Aliens                            Int?
+  Alternate_History                 Int? @map("Alternate History")
+  Ambient                           Int?
+  America                           Int?
+  Animation___Modeling              Int? @map("Animation & Modeling")
+  Anime                             Int?
+  Arcade                            Int?
+  Arena_Shooter                     Int? @map("Arena Shooter")
+  Artificial_Intelligence           Int? @map("Artificial Intelligence")
+  Assassin                          Int?
+  Atmospheric                       Int?
+  Audio_Production                  Int? @map("Audio Production")
+  Auto_Battler                      Int? @map("Auto Battler")
+  Automation                        Int?
+  Automobile_Sim                    Int? @map("Automobile Sim")
+  Base_Building                     Int? @map("Base-Building")
+  Baseball                          Int?
+  Basketball                        Int?
+  Battle_Royale                     Int? @map("Battle Royale")
+  Beat__em_up                       Int? @map("Beat 'em up")
+  Beautiful                         Int?
+  Bikes                             Int?
+  Blood                             Int?
+  Board_Game                        Int? @map("Board Game")
+  Boomer_Shooter                    Int? @map("Boomer Shooter")
+  Bowling                           Int?
+  Boxing                            Int?
+  Building                          Int?
+  Bullet_Hell                       Int? @map("Bullet Hell")
+  Bullet_Time                       Int? @map("Bullet Time")
+  CRPG                              Int?
+  Capitalism                        Int?
+  Card_Battler                      Int? @map("Card Battler")
+  Card_Game                         Int? @map("Card Game")
+  Cartoon                           Int?
+  Cartoony                          Int?
+  Casual                            Int?
+  Cats                              Int?
+  Character_Action_Game             Int? @map("Character Action Game")
+  Character_Customization           Int? @map("Character Customization")
+  Chess                             Int?
+  Choices_Matter                    Int? @map("Choices Matter")
+  Choose_Your_Own_Adventure         Int? @map("Choose Your Own Adventure")
+  Cinematic                         Int?
+  City_Builder                      Int? @map("City Builder")
+  Class_Based                       Int? @map("Class-Based")
+  Classic                           Int?
+  Clicker                           Int?
+  Co_op                             Int? @map("Co-op")
+  Co_op_Campaign                    Int? @map("Co-op Campaign")
+  Cold_War                          Int? @map("Cold War")
+  Collectathon                      Int?
+  Colony_Sim                        Int? @map("Colony Sim")
+  Colorful                          Int?
+  Combat                            Int?
+  Comedy                            Int?
+  Comic_Book                        Int? @map("Comic Book")
+  Competitive                       Int?
+  Conspiracy                        Int?
+  Controller                        Int?
+  Conversation                      Int?
+  Cooking                           Int?
+  Cozy                              Int?
+  Crafting                          Int?
+  Creature_Collector                Int? @map("Creature Collector")
+  Crime                             Int?
+  Crowdfunded                       Int?
+  Cult_Classic                      Int? @map("Cult Classic")
+  Cute                              Int?
+  Cyberpunk                         Int?
+  Dark                              Int?
+  Dark_Comedy                       Int? @map("Dark Comedy")
+  Dark_Fantasy                      Int? @map("Dark Fantasy")
+  Dark_Humor                        Int? @map("Dark Humor")
+  Dating_Sim                        Int? @map("Dating Sim")
+  Deckbuilding                      Int?
+  Demons                            Int?
+  Design___Illustration             Int? @map("Design & Illustration")
+  Destruction                       Int?
+  Detective                         Int?
+  Difficult                         Int?
+  Dinosaurs                         Int?
+  Diplomacy                         Int?
+  Documentary                       Int?
+  Dog                               Int?
+  Dragons                           Int?
+  Drama                             Int?
+  Driving                           Int?
+  Dungeon_Crawler                   Int? @map("Dungeon Crawler")
+  Dungeons___Dragons                Int? @map("Dungeons & Dragons")
+  Dwarf                             Int?
+  Dynamic_Narration                 Int? @map("Dynamic Narration")
+  Dystopian_                        Int? @map("Dystopian ")
+  Early_Access                      Int? @map("Early Access")
+  Economy                           Int?
+  Education                         Int?
+  Electronic_Music                  Int? @map("Electronic Music")
+  Emotional                         Int?
+  Episodic                          Int?
+  Escape_Room                       Int? @map("Escape Room")
+  Experience                        Int?
+  Experimental                      Int?
+  Exploration                       Int?
+  FMV                               Int?
+  FPS                               Int?
+  Faith                             Int?
+  Family_Friendly                   Int? @map("Family Friendly")
+  Fantasy                           Int?
+  Farming                           Int?
+  Farming_Sim                       Int? @map("Farming Sim")
+  Fast_Paced                        Int? @map("Fast-Paced")
+  Female_Protagonist                Int? @map("Female Protagonist")
+  Fighting                          Int?
+  First_Person                      Int? @map("First-Person")
+  Fishing                           Int?
+  Flight                            Int?
+  Football__American_               Int? @map("Football (American)")
+  Football__Soccer_                 Int? @map("Football (Soccer)")
+  Foreign                           Int?
+  Free_to_Play                      Int? @map("Free to Play")
+  Funny                             Int?
+  Futuristic                        Int?
+  Gambling                          Int?
+  Game_Development                  Int? @map("Game Development")
+  GameMaker                         Int?
+  Games_Workshop                    Int? @map("Games Workshop")
+  Gaming                            Int?
+  God_Game                          Int? @map("God Game")
+  Gore                              Int?
+  Gothic                            Int?
+  Grand_Strategy                    Int? @map("Grand Strategy")
+  Great_Soundtrack                  Int? @map("Great Soundtrack")
+  Grid_Based_Movement               Int? @map("Grid-Based Movement")
+  Gun_Customization                 Int? @map("Gun Customization")
+  Hack_and_Slash                    Int? @map("Hack and Slash")
+  Hacking                           Int?
+  Hand_drawn                        Int? @map("Hand-drawn")
+  Heist                             Int?
+  Hentai                            Int?
+  Hero_Shooter                      Int? @map("Hero Shooter")
+  Hex_Grid                          Int? @map("Hex Grid")
+  Hidden_Object                     Int? @map("Hidden Object")
+  Historical                        Int?
+  Hockey                            Int?
+  Horror                            Int?
+  Horses                            Int?
+  Hunting                           Int?
+  Idler                             Int?
+  Illuminati                        Int?
+  Immersive                         Int?
+  Immersive_Sim                     Int? @map("Immersive Sim")
+  Indie                             Int?
+  Interactive_Fiction               Int? @map("Interactive Fiction")
+  Inventory_Management              Int? @map("Inventory Management")
+  Investigation                     Int?
+  Isometric                         Int?
+  JRPG                              Int?
+  Job_Simulator                     Int? @map("Job Simulator")
+  Kickstarter                       Int?
+  LEGO                              Int?
+  LGBTQ_                            Int? @map("LGBTQ+")
+  Lemmings                          Int?
+  Level_Editor                      Int? @map("Level Editor")
+  Life_Sim                          Int? @map("Life Sim")
+  Linear                            Int?
+  Local_Co_Op                       Int? @map("Local Co-Op")
+  Local_Multiplayer                 Int? @map("Local Multiplayer")
+  Logic                             Int?
+  Loot                              Int?
+  Looter_Shooter                    Int? @map("Looter Shooter")
+  Lore_Rich                         Int? @map("Lore-Rich")
+  Lovecraftian                      Int?
+  MMORPG                            Int?
+  MOBA                              Int?
+  Magic                             Int?
+  Mahjong                           Int?
+  Management                        Int?
+  Mars                              Int?
+  Martial_Arts                      Int? @map("Martial Arts")
+  Massively_Multiplayer             Int? @map("Massively Multiplayer")
+  Match_3                           Int? @map("Match 3")
+  Mature                            Int?
+  Mechs                             Int?
+  Medical_Sim                       Int? @map("Medical Sim")
+  Medieval                          Int?
+  Memes                             Int?
+  Metroidvania                      Int?
+  Military                          Int?
+  Minigames                         Int?
+  Minimalist                        Int?
+  Mining                            Int?
+  Moddable                          Int?
+  Modern                            Int?
+  Motocross                         Int?
+  Motorbike                         Int?
+  Mouse_only                        Int? @map("Mouse only")
+  Movie                             Int?
+  Multiplayer                       Int?
+  Multiple_Endings                  Int? @map("Multiple Endings")
+  Music                             Int?
+  Music_Based_Procedural_Generation Int? @map("Music-Based Procedural Generation")
+  Mystery                           Int?
+  Mystery_Dungeon                   Int? @map("Mystery Dungeon")
+  Mythology                         Int?
+  NSFW                              Int?
+  Narration                         Int?
+  Narrative                         Int?
+  Nature                            Int?
+  Naval                             Int?
+  Naval_Combat                      Int? @map("Naval Combat")
+  Ninja                             Int?
+  Noir                              Int?
+  Nonlinear                         Int?
+  Nostalgia                         Int?
+  Nudity                            Int?
+  Offroad                           Int?
+  Old_School                        Int? @map("Old School")
+  Online_Co_Op                      Int? @map("Online Co-Op")
+  Open_World                        Int? @map("Open World")
+  Open_World_Survival_Craft         Int? @map("Open World Survival Craft")
+  Otome                             Int?
+  Outbreak_Sim                      Int? @map("Outbreak Sim")
+  Parkour                           Int?
+  Parody_                           Int? @map("Parody ")
+  Party                             Int?
+  Party_Game                        Int? @map("Party Game")
+  Party_Based_RPG                   Int? @map("Party-Based RPG")
+  Perma_Death                       Int? @map("Perma Death")
+  Philosophical                     Int?
+  Photo_Editing                     Int? @map("Photo Editing")
+  Physics                           Int?
+  Pinball                           Int?
+  Pirates                           Int?
+  Pixel_Graphics                    Int? @map("Pixel Graphics")
+  Platformer                        Int?
+  Point___Click                     Int? @map("Point & Click")
+  Political                         Int?
+  Political_Sim                     Int? @map("Political Sim")
+  Politics                          Int?
+  Post_apocalyptic                  Int? @map("Post-apocalyptic")
+  Precision_Platformer              Int? @map("Precision Platformer")
+  Procedural_Generation             Int? @map("Procedural Generation")
+  Programming                       Int?
+  Psychedelic                       Int?
+  Psychological                     Int?
+  Psychological_Horror              Int? @map("Psychological Horror")
+  Puzzle                            Int?
+  Puzzle_Platformer                 Int? @map("Puzzle-Platformer")
+  PvE                               Int?
+  PvP                               Int?
+  Quick_Time_Events                 Int? @map("Quick-Time Events")
+  RPG                               Int?
+  RPGMaker                          Int?
+  RTS                               Int?
+  Racing                            Int?
+  Real_Time_Tactics                 Int? @map("Real Time Tactics")
+  Real_Time                         Int? @map("Real-Time")
+  Real_Time_with_Pause              Int? @map("Real-Time with Pause")
+  Realistic                         Int?
+  Relaxing                          Int?
+  Remake                            Int?
+  Replay_Value                      Int? @map("Replay Value")
+  Resource_Management               Int? @map("Resource Management")
+  Retro                             Int?
+  Rhythm                            Int?
+  Robots                            Int?
+  Rogue_like                        Int? @map("Rogue-like")
+  Rogue_lite                        Int? @map("Rogue-lite")
+  Roguelike_Deckbuilder             Int? @map("Roguelike Deckbuilder")
+  Romance                           Int?
+  Runner                            Int?
+  Sailing                           Int?
+  Sandbox                           Int?
+  Satire                            Int?
+  Sci_fi                            Int? @map("Sci-fi")
+  Science                           Int?
+  Score_Attack                      Int? @map("Score Attack")
+  Sequel                            Int?
+  Sexual_Content                    Int? @map("Sexual Content")
+  Shoot__Em_Up                      Int? @map("Shoot 'Em Up")
+  Shooter                           Int?
+  Short                             Int?
+  Side_Scroller                     Int? @map("Side Scroller")
+  Silent_Protagonist                Int? @map("Silent Protagonist")
+  Simulation                        Int?
+  Singleplayer                      Int?
+  Skating                           Int?
+  Sniper                            Int?
+  Snow                              Int?
+  Social_Deduction                  Int? @map("Social Deduction")
+  Software                          Int?
+  Software_Training                 Int? @map("Software Training")
+  Sokoban                           Int?
+  Solitaire                         Int?
+  Souls_like                        Int? @map("Souls-like")
+  Soundtrack                        Int?
+  Space                             Int?
+  Space_Sim                         Int? @map("Space Sim")
+  Spectacle_fighter                 Int? @map("Spectacle fighter")
+  Spelling                          Int?
+  Split_Screen                      Int? @map("Split Screen")
+  Sports                            Int?
+  Stealth                           Int?
+  Steam_Machine                     Int? @map("Steam Machine")
+  Steampunk                         Int?
+  Story_Rich                        Int? @map("Story Rich")
+  Strategy                          Int?
+  Strategy_RPG                      Int? @map("Strategy RPG")
+  Stylized                          Int?
+  Submarine                         Int?
+  Superhero                         Int?
+  Supernatural                      Int?
+  Surreal                           Int?
+  Survival                          Int?
+  Survival_Horror                   Int? @map("Survival Horror")
+  Swordplay                         Int?
+  Tabletop                          Int?
+  Tactical                          Int?
+  Tactical_RPG                      Int? @map("Tactical RPG")
+  Tanks                             Int?
+  Team_Based                        Int? @map("Team-Based")
+  Text_Based                        Int? @map("Text-Based")
+  Third_Person                      Int? @map("Third Person")
+  Third_Person_Shooter              Int? @map("Third-Person Shooter")
+  Thriller                          Int?
+  Time_Attack                       Int? @map("Time Attack")
+  Time_Management                   Int? @map("Time Management")
+  Time_Manipulation                 Int? @map("Time Manipulation")
+  Time_Travel                       Int? @map("Time Travel")
+  Top_Down                          Int? @map("Top-Down")
+  Top_Down_Shooter                  Int? @map("Top-Down Shooter")
+  Touch_Friendly                    Int? @map("Touch-Friendly")
+  Tower_Defense                     Int? @map("Tower Defense")
+  Trading                           Int?
+  Trading_Card_Game                 Int? @map("Trading Card Game")
+  Traditional_Roguelike             Int? @map("Traditional Roguelike")
+  Trains                            Int?
+  Transhumanism                     Int?
+  Transportation                    Int?
+  Trivia                            Int?
+  Turn_Based                        Int? @map("Turn-Based")
+  Turn_Based_Combat                 Int? @map("Turn-Based Combat")
+  Turn_Based_Strategy               Int? @map("Turn-Based Strategy")
+  Turn_Based_Tactics                Int? @map("Turn-Based Tactics")
+  Tutorial                          Int?
+  Twin_Stick_Shooter                Int? @map("Twin Stick Shooter")
+  Typing                            Int?
+  Underground                       Int?
+  Underwater                        Int?
+  Unforgiving                       Int?
+  Utilities                         Int?
+  VR                                Int?
+  Vampire                           Int?
+  Vehicular_Combat                  Int? @map("Vehicular Combat")
+  Video_Production                  Int? @map("Video Production")
+  Villain_Protagonist               Int? @map("Villain Protagonist")
+  Violent                           Int?
+  Visual_Novel                      Int? @map("Visual Novel")
+  Voxel                             Int?
+  Walking_Simulator                 Int? @map("Walking Simulator")
+  War                               Int?
+  Wargame                           Int?
+  Warhammer_40K                     Int? @map("Warhammer 40K")
+  Web_Publishing                    Int? @map("Web Publishing")
+  Western                           Int?
+  Wholesome                         Int?
+  Word_Game                         Int? @map("Word Game")
+  World_War_I                       Int? @map("World War I")
+  World_War_II                      Int? @map("World War II")
+  Wrestling                         Int?
+  Zombies                           Int?
+  e_sports                          Int? @map("e-sports")
+}
+
+model apps {
+  id                       String                 @id @default(auto()) @map("_id") @db.ObjectId
+  about_the_game           String
+  achievements             Int
+  average_playtime_2weeks  Int
+  average_playtime_forever Int
+  background               String
+  categories               String[]
+  detailed_description     String
+  developers               String[]
+  dlc_count                Int
+  estimated_owners         String
+  full_audio_languages     String[]
+  genres                   String[]
+  header_image             String
+  id_                      String                 @map("id")
+  linux                    Boolean
+  linux_requirements       AppsLinuxRequirements?
+  mac                      Boolean
+  mac_requirements         AppsMacRequirements?
+  median_playtime_2weeks   Int
+  median_playtime_forever  Int
+  metacritic_score         Int
+  metacritic_url           String
+  movies                   String[]
+  name                     String
+  negative                 Int
+  notes                    String
+  packages                 AppsPackages[]
+  pc_requirements          AppsPcRequirements?
+  peak_ccu                 Int
+  positive                 Int
+  /// Multiple data types found: Float: 82.1%, Int: 17.9% out of 1000 sampled entries
+  price                    Json
+  publishers               String[]
+  recommendations          Int
+  release_date             String
+  required_age             Int
+  reviews                  String
+  /// Multiple data types found: String: 99.8%, Int: 0.2% out of 1000 sampled entries
+  score_rank               Json
+  screenshots              String[]
+  short_description        String
+  support_email            String
+  support_url              String
+  supported_languages      String[]
+  tags                     AppsTags?
+  user_score               Int
+  website                  String
+  windows                  Boolean
+}
+
+model users {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  v          Int      @map("__v")
+  experience Int
+  level      Int
+  owned      String[]
+  password   String
+  summary    String
+  username   String
+}
