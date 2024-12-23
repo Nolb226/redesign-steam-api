@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import defineRoutes from './services';
 import { errorHandler } from './libraries/error-handling';
 import morgan from 'morgan';
+import { defineSwaggerSpec } from './libraries/swagger';
 
 // // Set the application to trust the reverse proxy
 // app.set('trust proxy', true);
@@ -17,6 +18,7 @@ export const createServer = (): Express => {
 		.use(helmet())
 		.use(morgan('combined'));
 	defineRoutes(app);
+	defineSwaggerSpec(app);
 	app.use(errorHandler.handler);
 	return app;
 };
