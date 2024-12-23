@@ -25,7 +25,7 @@ type AppsPackages {
 
 type AppsPackagesSubs {
   description String
-  /// Multiple data types found: Float: 99.6%, Int: 0.4% out of 904 sampled entries
+  /// Multiple data types found: Float: 99.2%, Int: 0.8% out of 914 sampled entries
   price       Json
   text        String
 }
@@ -37,19 +37,14 @@ type AppsPcRequirements {
 
 type AppsTags {
   s                                 Int? @map("1980s")
-  s                                 Int? @map("1990's")
   D                                 Int? @map("2.5D")
-  D                                 Int? @map("2D")
   D_Fighter                         Int? @map("2D Fighter")
   D_Platformer                      Int? @map("2D Platformer")
-  D                                 Int? @map("3D")
-  D_Fighter                         Int? @map("3D Fighter")
-  D_Platformer                      Int? @map("3D Platformer")
+
   D_Vision                          Int? @map("3D Vision")
   Player_Local                      Int? @map("4 Player Local")
   X                                 Int? @map("4X")
   DOF                               Int? @map("6DOF")
-  bit_Music                         Int? @map("8-bit Music")
   Abstract                          Int?
   Action                            Int?
   Action_RPG                        Int? @map("Action RPG")
@@ -66,12 +61,13 @@ type AppsTags {
   Animation___Modeling              Int? @map("Animation & Modeling")
   Anime                             Int?
   Arcade                            Int?
+  Archery                           Int?
   Arena_Shooter                     Int? @map("Arena Shooter")
   Artificial_Intelligence           Int? @map("Artificial Intelligence")
   Assassin                          Int?
+  Asynchronous_Multiplayer          Int? @map("Asynchronous Multiplayer")
   Atmospheric                       Int?
   Audio_Production                  Int? @map("Audio Production")
-  Auto_Battler                      Int? @map("Auto Battler")
   Automation                        Int?
   Automobile_Sim                    Int? @map("Automobile Sim")
   Base_Building                     Int? @map("Base-Building")
@@ -80,7 +76,7 @@ type AppsTags {
   Battle_Royale                     Int? @map("Battle Royale")
   Beat__em_up                       Int? @map("Beat 'em up")
   Beautiful                         Int?
-  Bikes                             Int?
+  Birds                             Int?
   Blood                             Int?
   Board_Game                        Int? @map("Board Game")
   Boomer_Shooter                    Int? @map("Boomer Shooter")
@@ -120,15 +116,16 @@ type AppsTags {
   Conspiracy                        Int?
   Controller                        Int?
   Conversation                      Int?
-  Cooking                           Int?
   Cozy                              Int?
   Crafting                          Int?
   Creature_Collector                Int? @map("Creature Collector")
+  Cricket                           Int?
   Crime                             Int?
   Crowdfunded                       Int?
   Cult_Classic                      Int? @map("Cult Classic")
   Cute                              Int?
   Cyberpunk                         Int?
+  Cycling                           Int?
   Dark                              Int?
   Dark_Comedy                       Int? @map("Dark Comedy")
   Dark_Fantasy                      Int? @map("Dark Fantasy")
@@ -142,14 +139,12 @@ type AppsTags {
   Difficult                         Int?
   Dinosaurs                         Int?
   Diplomacy                         Int?
-  Documentary                       Int?
   Dog                               Int?
   Dragons                           Int?
   Drama                             Int?
   Driving                           Int?
   Dungeon_Crawler                   Int? @map("Dungeon Crawler")
   Dungeons___Dragons                Int? @map("Dungeons & Dragons")
-  Dwarf                             Int?
   Dynamic_Narration                 Int? @map("Dynamic Narration")
   Dystopian_                        Int? @map("Dystopian ")
   Early_Access                      Int? @map("Early Access")
@@ -202,7 +197,6 @@ type AppsTags {
   Hex_Grid                          Int? @map("Hex Grid")
   Hidden_Object                     Int? @map("Hidden Object")
   Historical                        Int?
-  Hockey                            Int?
   Horror                            Int?
   Horses                            Int?
   Hunting                           Int?
@@ -211,12 +205,13 @@ type AppsTags {
   Immersive                         Int?
   Immersive_Sim                     Int? @map("Immersive Sim")
   Indie                             Int?
+  Instrumental_Music                Int? @map("Instrumental Music")
   Interactive_Fiction               Int? @map("Interactive Fiction")
   Inventory_Management              Int? @map("Inventory Management")
   Investigation                     Int?
   Isometric                         Int?
   JRPG                              Int?
-  Job_Simulator                     Int? @map("Job Simulator")
+  Jet                               Int?
   Kickstarter                       Int?
   LEGO                              Int?
   LGBTQ_                            Int? @map("LGBTQ+")
@@ -234,7 +229,6 @@ type AppsTags {
   MMORPG                            Int?
   MOBA                              Int?
   Magic                             Int?
-  Mahjong                           Int?
   Management                        Int?
   Mars                              Int?
   Martial_Arts                      Int? @map("Martial Arts")
@@ -252,7 +246,6 @@ type AppsTags {
   Mining                            Int?
   Moddable                          Int?
   Modern                            Int?
-  Motocross                         Int?
   Motorbike                         Int?
   Mouse_only                        Int? @map("Mouse only")
   Movie                             Int?
@@ -288,7 +281,6 @@ type AppsTags {
   Party_Based_RPG                   Int? @map("Party-Based RPG")
   Perma_Death                       Int? @map("Perma Death")
   Philosophical                     Int?
-  Photo_Editing                     Int? @map("Photo Editing")
   Physics                           Int?
   Pinball                           Int?
   Pirates                           Int?
@@ -346,6 +338,7 @@ type AppsTags {
   Simulation                        Int?
   Singleplayer                      Int?
   Skating                           Int?
+  Skiing                            Int?
   Sniper                            Int?
   Snow                              Int?
   Social_Deduction                  Int? @map("Social Deduction")
@@ -421,8 +414,8 @@ type AppsTags {
   Walking_Simulator                 Int? @map("Walking Simulator")
   War                               Int?
   Wargame                           Int?
-  Warhammer_40K                     Int? @map("Warhammer 40K")
   Web_Publishing                    Int? @map("Web Publishing")
+  Werewolves                        Int?
   Western                           Int?
   Wholesome                         Int?
   Word_Game                         Int? @map("Word Game")
@@ -465,17 +458,18 @@ model apps {
   pc_requirements          AppsPcRequirements?
   peak_ccu                 Int
   positive                 Int
-  /// Multiple data types found: Float: 82.1%, Int: 17.9% out of 1000 sampled entries
-  price                    Json
+  /// Multiple data types found: Float: 82.7%, Int: 17.3% out of 1000 sampled entries
+  price                    Float
   publishers               String[]
   recommendations          Int
   release_date             String
   required_age             Int
   reviews                  String
   /// Multiple data types found: String: 99.8%, Int: 0.2% out of 1000 sampled entries
-  score_rank               Json
+  score_rank               Float
   screenshots              String[]
   short_description        String
+  slug                     String
   support_email            String
   support_url              String
   supported_languages      String[]

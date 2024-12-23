@@ -13,3 +13,13 @@ export async function getAppById(id: string) {
 	}
 	return response;
 }
+
+export async function getAllApp(page?: number, size?: number) {
+	const response = await appRepository.getAllApp(page, size);
+	return response;
+}
+
+export async function searchApp(query: string) {
+	const response = await appRepository.searchApp(query);
+	return response;
+}
