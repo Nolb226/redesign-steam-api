@@ -36,10 +36,10 @@ type AppsPcRequirements {
 }
 
 type AppsTags {
-  s                                 Int? @map("1980s")
-  D                                 Int? @map("2.5D")
-  D_Fighter                         Int? @map("2D Fighter")
-  D_Platformer                      Int? @map("2D Platformer")
+  s            Int? @map("1980s")
+  D            Int? @map("2.5D")
+  D_Fighter    Int? @map("2D Fighter")
+  D_Platformer Int? @map("2D Platformer")
 
   D_Vision                          Int? @map("3D Vision")
   Player_Local                      Int? @map("4 Player Local")
@@ -477,6 +477,8 @@ model apps {
   user_score               Int
   website                  String
   windows                  Boolean
+  order                    order?                 @relation(fields: [orderId], references: [id])
+  orderId                  String?                @db.ObjectId
 }
 
 model users {
@@ -488,4 +490,13 @@ model users {
   password   String
   summary    String
   username   String
+  order      order[]
+}
+
+model order {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  amount  Float
+  apps    apps[]
+  user    users  @relation(fields: [usersId], references: [id])
+  usersId String @db.ObjectId
 }

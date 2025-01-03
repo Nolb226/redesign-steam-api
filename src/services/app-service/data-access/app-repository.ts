@@ -12,13 +12,31 @@ export async function getAppById(id: string) {
 
 export async function getAllApp(
 	page: number = 1,
-	size: number = 10
+	size: number = 10,
+	genres?: string[] | 'all'
 ): Promise<[any[], number]> {
-	const resultApps = await prisma.apps.findMany({
-		skip: (page - 1) * size,
-		take: size,
+	const resultApps = (await prisma.apps.findRaw({
+		filter: {
+			...(genres !== 'all' && {
+				genres: {
+					$in: genres,
+				},
+			}),
+		},
+		options: {
+			limit: size,
+			offset: (page - 1) * size,
+		},
+	})) as unknown as any[];
+	const totalApps = await prisma.apps.count({
+		where: {
+			...(genres !== 'all' && {
+				genres: {
+					hasSome: genres,
+				},
+			}),
+		},
 	});
-	const totalApps = await prisma.apps.count();
 
 	return [resultApps, totalApps];
 }

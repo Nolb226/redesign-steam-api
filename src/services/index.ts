@@ -1,5 +1,5 @@
 import express from 'express';
-import appRoutes from './apps-service/api/route';
+import appRoutes from './app-service/api/route';
 
 export default function defineRoutes(app: express.Application) {
 	const router = express.Router();

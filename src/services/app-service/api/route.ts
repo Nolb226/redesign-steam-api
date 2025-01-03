@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import * as queryAppUseCase from '@/services/apps-service/domain/query-app-use-case';
+import * as queryAppUseCase from '@/services/app-service/domain/query-app-use-case';
 import { AppError } from '@/libraries/error-handling/app-error';
 import { BASIC_ERRORS, HTTP_CODES } from '@/contants/http-code';
 
@@ -10,7 +10,8 @@ appRoutes.get('/', async (req, res, next) => {
 	try {
 		const page = parseInt(req.query.page as string) || 1;
 		const size = parseInt(req.query.size as string) || 10;
-		const [apps, totals] = await queryAppUseCase.getAllApp(page, size);
+		const genres = (req.query.genres as string[]) || 'all';
+		const [apps, totals] = await queryAppUseCase.getAllApp(page, size, genres);
 		const totalPages = Math.ceil(totals / size);
 		res.status(200).json({ page, size, apps, totals, totalPages });
 	} catch (error) {
@@ -36,6 +37,7 @@ appRoutes.get('/search', async (req, res, next) => {
 		next(error);
 	}
 });
+
 appRoutes.get('/:id', async (req, res, next) => {
 	try {
 		const { id } = req.params;
