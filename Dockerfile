@@ -18,5 +18,7 @@ RUN npm run build
 # Expose port 8080
 EXPOSE 8080
 
+RUN apt-get update -y && apt-get install -y openssl
+RUN npx prisma generate
 # Start the app
 CMD npm run start
